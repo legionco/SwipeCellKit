@@ -27,7 +27,7 @@ open class SwipeTableViewCell: UITableViewCell {
 
     var originalLayoutMargins: UIEdgeInsets = .zero
 
-    var swipeEnabled: Bool = false {
+    public var swipeEnabled: Bool = false {
         didSet {
             panGestureRecognizer.isEnabled = swipeEnabled
             tapGestureRecognizer.isEnabled = swipeEnabled
@@ -217,16 +217,9 @@ open class SwipeTableViewCell: UITableViewCell {
             let actions = delegate?.tableView(tableView, editActionsForRowAt: indexPath, for: orientation),
             actions.count > 0
             else {
-
-                panGestureRecognizer.isEnabled = false
-                tapGestureRecognizer.isEnabled = false
-
                 return false
         }
-
-        panGestureRecognizer.isEnabled = true
-        tapGestureRecognizer.isEnabled = true
-
+        
         originalLayoutMargins = super.layoutMargins
 
         // Remove highlight and deselect any selected cells
